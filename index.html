@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAITHAK CAFÉ - Order Online | Bhadras Road, Ghatampur</title>
+    <meta name="description" content="Order fresh Fast Food, Tea, Momos, Noodles, Rolls, Sandwiches and Combos online from Baithak Café Ghatampur. Fast delivery at Bhadras Road, Near King Cooling Centre.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            850: '#522307',
+                            900: '#3c1803',
+                            950: '#230c02',
+                        },
+                        warm: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            800: '#92400e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Poppins', sans-[#000]; }
+        .font-serif-title { font-family: 'Playfair Display', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- Local Business SEO Schema (JSON-LD) for Ghatampur / Kanpur Google Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Baithak Café",
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600",
+      "telephone": "+917518417767",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bhadras Road, Near King Cooling Centre",
+        "addressLocality": "Ghatampur",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "209206",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "26.1568",
+        "longitude": "80.1633"
+      },
+      "url": "https://baithakcafe.com",
+      "priceRange": "₹",
+      "servesCuisine": ["Fast Food", "Tea", "Snacks", "Chinese", "Indo-Chinese"],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "22:00"
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-amber-950 text-stone-100 min-h-screen pb-24 md:pb-12 flex flex-col">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-stone-900 text-xs md:text-sm font-semibold py-1.5 px-4 text-center shadow-inner flex items-center justify-center gap-2">
+        <i class="fa-solid fa-truck-fast animate-bounce"></i>
+        <span>⚡ Free Home Delivery on orders above ₹250 in Ghatampur!</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-amber-950/95 backdrop-blur-md border-b border-amber-900/60 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Brand Info -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-md border border-amber-300/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-mug-hot text-amber-950 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif-title text-xl md:text-2xl font-bold tracking-wide text-amber-400 leading-none">BAITHAK CAFÉ</h1>
+                    <p class="text-[11px] text-amber-200/80 mt-1 flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-amber-500"></i>
+                        <span>Bhadras Road, Ghatampur</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex items-center gap-2">
+                <a href="tel:+917518417767" class="hidden sm:flex items-center gap-1.5 bg-amber-900/80 hover:bg-amber-800 text-amber-200 text-xs px-3 py-2 rounded-lg border border-amber-700/50 transition">
+                    <i class="fa-solid fa-phone text-amber-400"></i>
+                    <span>+91 7518417767</span>
+                </a>
+                <button onclick="openCartModal()" class="relative bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-amber-950 font-bold text-xs md:text-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2 transition transform active:scale-95">
+                    <i class="fa-solid fa-basket-shopping text-base"></i>
+                    <span class="hidden sm:inline">My Cart</span>
+                    <span id="cart-badge-count" class="bg-amber-950 text-amber-400 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border border-amber-400/40">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto w-full px-4 pt-6 pb-12">
+        
+        <!-- Hero Section -->
+        <section class="relative rounded-3xl overflow-hidden mb-8 border border-amber-800/40 bg-gradient-to-r from-amber-900/90 to-stone-900 p-6 md:p-10 shadow-2xl">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center opacity-15"></div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="inline-block bg-amber-500/20 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/30 mb-3">
+                    📍 Near King Cooling Centre, Ghatampur
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight font-serif-title mb-3">
+                    Swad Aisa Jo <span class="text-amber-400">Dil Chhoo Jaye!</span>
+                </h2>
+                <p class="text-stone-300 text-sm md:text-base mb-6">
+                    Fresh Snacks, Kullad Chai, Crispy Momos, Burgers, Noodles, Sandwiches & Combos. Order online for fast local delivery or direct pickup!
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#menu-section" class="bg-amber-500 hover:bg-amber-400 text-amber-950 font-bold px-5 py-2.5 rounded-xl text-sm transition shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-utensils"></i> View Full Menu
+                    </a>
+                    <a href="https://maps.google.com/?q=Ghatampur+Uttar+Pradesh" target="_blank" class="bg-stone-800/90 hover:bg-stone-700 text-stone-200 font-semibold px-4 py-2.5 rounded-xl text-sm border border-stone-600/50 transition flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-amber-400"></i> Open Location Map
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Address Bar Card -->
+        <div class="bg-amber-900/40 border border-amber-800/60 rounded-2xl p-4 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs md:text-sm">
+            <div class="flex items-start gap-3">
+                <div class="p-2.5 bg-amber-800/60 rounded-xl text-amber-400 text-lg flex-shrink-0">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-amber-300 text-base">BAITHAK CAFÉ GHATAMPUR</h3>
+                    <p class="text-stone-300 font-medium mt-0.5">📍 Bhadras Road, Ghatampur, Near King Cooling Centre, UP - 209206</p>
+                    <p class="text-amber-200/70 text-xs mt-1">📞 Contact/Order helpline: +91 7518417767</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 w-full md:w-auto">
+                <a href="tel:+917518417767" class="flex-1 md:flex-initial text-center bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-4 py-2 rounded-xl border border-amber-500/30 transition font-medium">
+                    <i class="fa-solid fa-phone mr-1"></i> Call Us
+                </a>
+                <a href="https://wa.me/917518417767" target="_blank" class="flex-1 md:flex-initial text-center bg-emerald-600/30 hover:bg-emerald-600/40 text-emerald-300 px-4 py-2 rounded-xl border border-emerald-500/30 transition font-medium">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Menu Section Header & Search -->
+        <div id="menu-section" class="scroll-mt-20">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white font-serif-title flex items-center gap-2">
+                        <span>Delicious Menu</span>
+                        <span class="text-xs font-normal text-amber-400 bg-amber-900/60 px-3 py-1 rounded-full border border-amber-700/40">Pure Taste</span>
+                    </h2>
+                    <p class="text-stone-400 text-xs md:text-sm">Select items to add directly to your cart</p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full sm:w-64">
+                    <input type="text" id="search-input" oninput="filterMenu()" placeholder="Search menu items..." class="w-full bg-amber-900/30 border border-amber-800/80 rounded-xl px-4 py-2 pl-9 text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-amber-500 transition">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-stone-500 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar" id="category-tabs">
+                <!-- Dynamically populated categories -->
+            </div>
+        </div>
+
+        <!-- Menu Grid Display -->
+        <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Dynamically populated menu cards -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-amber-950 border-t border-amber-900/80 pt-8 pb-20 md:pb-8 text-xs text-stone-400">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+                <h3 class="font-serif-title text-amber-400 font-bold text-lg mb-2">BAITHAK CAFÉ</h3>
+                <p class="text-stone-400 mb-3 leading-relaxed">Your favorite hangout spot in Ghatampur for fresh fast food, hot beverages, and delicious bites.</p>
+                <p class="text-stone-300 font-medium">📍 Address: Bhadras Road, Ghatampur, Near King Cooling Centre</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-stone-200 text-sm mb-2">Quick Contact</h4>
+                <p class="mb-1"><i class="fa-solid fa-phone text-amber-500 mr-2"></i> +91 7518417767</p>
+                <p class="mb-1"><i class="fa-brands fa-whatsapp text-emerald-500 mr-2"></i> +91 7518417767</p>
+                <p class="mb-1"><i class="fa-solid fa-clock text-amber-500 mr-2"></i> Open Daily: 10:00 AM - 10:00 PM</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-stone-200 text-sm mb-2">Delivery Policy</h4>
+                <p class="text-stone-400 leading-relaxed">Free home delivery on all orders above ₹250 within Ghatampur town. Flat ₹30 delivery fee for orders under ₹250.</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-4 border-t border-amber-900/40 text-center text-stone-500">
+            &copy; Baithak Café Ghatampur. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Sticky Cart Bar -->
+    <div id="sticky-cart-bar" class="fixed bottom-0 left-0 right-0 z-30 bg-gradient-to-r from-amber-600 to-amber-500 text-amber-950 p-3 shadow-2xl flex items-center justify-between transition-transform transform translate-y-full border-t border-amber-300/40">
+        <div class="flex items-center gap-3">
+            <div class="bg-amber-950 text-amber-400 p-2.5 rounded-xl font-bold text-sm relative">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="sticky-cart-count" class="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </div>
+            <div>
+                <p class="text-xs uppercase tracking-wider font-extrabold text-amber-950/80">Total Amount</p>
+                <p class="text-base font-extrabold text-amber-950" id="sticky-cart-total">₹0</p>
+            </div>
+        </div>
+        <button onclick="openCartModal()" class="bg-amber-950 hover:bg-amber-900 text-amber-400 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-2">
+            <span>View Order & Checkout</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Cart & Checkout Modal Drawer -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex justify-end opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-amber-950 w-full max-w-md h-full shadow-2xl flex flex-col border-l border-amber-900/60 overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="p-4 bg-amber-900/50 border-b border-amber-800/60 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-amber-400 text-lg"></i>
+                    <h3 class="font-bold text-stone-100 text-lg">Your Order Cart</h3>
+                </div>
+                <button onclick="closeCartModal()" class="p-2 text-stone-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body (Cart items or empty) -->
+            <div class="flex-grow overflow-y-auto p-4 space-y-4" id="cart-modal-body">
+                <!-- Cart items list rendered here dynamically -->
+            </div>
+
+            <!-- Checkout Form Section -->
+            <div id="cart-modal-footer" class="p-4 bg-amber-900/40 border-t border-amber-800/60 space-y-3">
+                <!-- Bill Breakdown -->
+                <div class="space-y-1.5 text-xs text-stone-300 border-b border-amber-800/40 pb-3">
+                    <div class="flex justify-between">
+                        <span>Items Subtotal:</span>
+                        <span class="font-semibold text-white" id="summary-subtotal">₹0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Delivery Fee (Ghatampur):</span>
+                        <span class="font-semibold" id="summary-delivery">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-amber-400 pt-1">
+                        <span>Grand Total:</span>
+                        <span id="summary-total">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Delivery Address Form -->
+                <form id="order-form" onsubmit="handleOrderSubmit(event)" class="space-y-2.5 pt-1">
+                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Delivery Details</h4>
+                    
+                    <input type="text" id="cust-name" required placeholder="Your Name *" class="w-full bg-amber-900/40 border border-amber-800/80 rounded-lg px-3 py-1.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500">
+                    
+                    <input type="tel" id="cust-phone" required pattern="[0-9]{10}" placeholder="10-Digit Mobile Number *" class="w-full bg-amber-900/40 border border-amber-800/80 rounded-lg px-3 py-1.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500">
+                    
+                    <textarea id="cust-address" required rows="2" placeholder="Delivery Address in Ghatampur *" class="w-full bg-amber-900/40 border border-amber-800/80 rounded-lg px-3 py-1.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500"></textarea>
+                    
+                    <input type="text" id="cust-landmark" placeholder="Landmark (e.g. Near King Cooling, Bhadras Rd)" class="w-full bg-amber-900/40 border border-amber-800/80 rounded-lg px-3 py-1.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500">
+
+                    <input type="text" id="cust-notes" placeholder="Order Instructions (e.g. Extra spicy, Less chutney)" class="w-full bg-amber-900/40 border border-amber-800/80 rounded-lg px-3 py-1.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500">
+
+                    <!-- Submit Buttons -->
+                    <div class="grid grid-cols-2 gap-2 pt-2">
+                        <button type="submit" name="method" value="whatsapp" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Order
+                        </button>
+                        <button type="submit" name="method" value="call" class="w-full bg-amber-500 hover:bg-amber-400 text-amber-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md transition">
+                            <i class="fa-solid fa-phone text-sm"></i> Call Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-20 right-4 z-50 bg-amber-500 text-amber-950 px-4 py-2.5 rounded-xl shadow-2xl font-semibold text-xs transition-opacity duration-300 opacity-0 pointer-events-none flex items-center gap-2 border border-amber-300/40">
+        <i class="fa-solid fa-circle-check text-sm"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <script>
+        // Menu Data Definitions
+        const MENU_DATA = [
+            // Starters / Fast Food
+            { id: 1, name: "Veg Crispy Burger", category: "Starters & Burgers", price: 60, desc: "Crispy patty burger with fresh veggies & mayo", veg: true },
+            { id: 2, name: "Cheese Burger", category: "Starters & Burgers", price: 80, desc: "Loaded cheese slice with spiced patty", veg: true },
+            { id: 3, name: "French Fries (Salted)", category: "Starters & Burgers", price: 70, desc: "Golden fried salted potato fries", veg: true },
+            { id: 4, name: "Peri Peri Fries", category: "Starters & Burgers", price: 90, desc: "Spicy peri peri seasoned fries", veg: true },
+
+            // Tea & Hot Beverages
+            { id: 5, name: "Special Kullad Tea", category: "Tea & Beverages", price: 20, desc: "Authentic ginger cardamom tea served hot", veg: true },
+            { id: 6, name: "Masala Chai", category: "Tea & Beverages", price: 25, desc: "Traditional spiced Indian tea", veg: true },
+            { id: 7, name: "Hot Coffee", category: "Tea & Beverages", price: 40, desc: "Rich creamy hot frothy coffee", veg: true },
+            { id: 8, name: "Cold Coffee with Ice Cream", category: "Tea & Beverages", price: 80, desc: "Blended cold coffee topped with chocolate scoop", veg: true },
+
+            // Momos
+            { id: 9, name: "Veg Steam Momos (8 Pcs)", category: "Momos", price: 70, desc: "Soft juicy steamed vegetable momos", veg: true },
+            { id: 10, name: "Veg Fried Momos (8 Pcs)", category: "Momos", price: 80, desc: "Crispy fried momos served with red spicy chutney", veg: true },
+            { id: 11, name: "Paneer Steam Momos (8 Pcs)", category: "Momos", price: 90, desc: "Loaded paneer filled steamed momos", veg: true },
+            { id: 12, name: "Paneer Fried Momos (8 Pcs)", category: "Momos", price: 100, desc: "Golden fried stuffed paneer momos", veg: true },
+
+            // Noodles & Maggi
+            { id: 13, name: "Veg Chowmein / Noodles", category: "Noodles & Maggi", price: 70, desc: "Classic wok tossed vegetable noodles", veg: true },
+            { id: 14, name: "Paneer Noodles", category: "Noodles & Maggi", price: 90, desc: "Tossed noodles with paneer cubes and veggies", veg: true },
+            { id: 15, name: "Classic Masala Maggi", category: "Noodles & Maggi", price: 50, desc: "Hot spiced classic noodles", veg: true },
+            { id: 16, name: "Cheese Vegetable Maggi", category: "Noodles & Maggi", price: 75, desc: "Maggi loaded with melted cheese and fresh corn/veggies", veg: true },
+
+            // Rolls
+            { id: 17, name: "Veg Kathi Roll", category: "Rolls", price: 60, desc: "Crispy paratha filled with spiced veggies & sauces", veg: true },
+            { id: 18, name: "Paneer Tikka Roll", category: "Rolls", price: 85, desc: "Marinated grilled paneer wrapped in flaky roll", veg: true },
+            { id: 19, name: "Cheese Corn Roll", category: "Rolls", price: 80, desc: "Sweet corn and molten cheese stuffing roll", veg: true },
+
+            // Sandwiches
+            { id: 20, name: "Veg Grilled Sandwich", category: "Sandwiches", price: 70, desc: "Double layer toasted veggie sandwich", veg: true },
+            { id: 21, name: "Cheese Corn Grill Sandwich", category: "Sandwiches", price: 90, desc: "Gooey melted cheese with sweet corn grill", veg: true },
+            { id: 22, name: "Paneer Club Sandwich", category: "Sandwiches", price: 110, desc: "Triple decker sandwich loaded with cottage cheese", veg: true },
+
+            // Chilli Potato & Chinese
+            { id: 23, name: "Crispy Chilli Potato", category: "Chilli Potato & Chinese", price: 90, desc: "Crispy potato fingers in sweet spicy chili sauce", veg: true },
+            { id: 24, name: "Honey Chilli Potato", category: "Chilli Potato & Chinese", price: 100, desc: "Honey glazed spicy crispy potatoes", veg: true },
+            { id: 25, name: "Veg Manchurian (Gravy/Dry)", category: "Chilli Potato & Chinese", price: 110, desc: "Vegetable dumplings in tangy soy garlic sauce", veg: true },
+
+            // Pasta & Rice
+            { id: 26, name: "Red Sauce Pasta (Penne)", category: "Pasta & Rice", price: 110, desc: "Tangy tomato garlic herb penne pasta", veg: true },
+            { id: 27, name: "White Sauce Cheese Pasta", category: "Pasta & Rice", price: 130, desc: "Creamy cheesy white sauce pasta with veggies", veg: true },
+            { id: 28, name: "Veg Fried Rice", category: "Pasta & Rice", price: 80, desc: "Aromatic wok fried rice with crisp veggies", veg: true },
+
+            // Patties & Snacks
+            { id: 29, name: "Aloo Patties", category: "Patties & Snacks", price: 25, desc: "Crispy baked puff pastry filled with spiced potato", veg: true },
+            { id: 30, name: "Cheese Patties", category: "Patties & Snacks", price: 40, desc: "Hot baked puff stuffed with paneer and cheese", veg: true },
+
+            // Special Combos
+            { id: 31, name: "Baithak Special Combo", category: "Combos", price: 199, desc: "Veg Burger + Fries + Cold Coffee", veg: true },
+            { id: 32, name: "Snack Lovers Combo", category: "Combos", price: 180, desc: "Veg Noodles + Steam Momos (4 Pcs) + Kullad Chai", veg: true },
+        ];
+
+        // Global Cart State
+        let cart = [];
+        let selectedCategory = "All";
+
+        // DOM Elements
+        const menuContainer = document.getElementById("menu-container");
+        const categoryTabsContainer = document.getElementById("category-tabs");
+        const cartBadgeCount = document.getElementById("cart-badge-count");
+        const stickyCartBar = document.getElementById("sticky-cart-bar");
+        const stickyCartCount = document.getElementById("sticky-cart-count");
+        const stickyCartTotal = document.getElementById("sticky-cart-total");
+        const cartModal = document.getElementById("cart-modal");
+        const cartModalBody = document.getElementById("cart-modal-body");
+        const summarySubtotal = document.getElementById("summary-subtotal");
+        const summaryDelivery = document.getElementById("summary-delivery");
+        const summaryTotal = document.getElementById("summary-total");
+
+        // Extract Categories
+        const categories = ["All", ...new Set(MENU_DATA.map(item => item.category))];
+
+        // Initialize App
+        window.addEventListener("DOMContentLoaded", () => {
+            renderCategoryTabs();
+            renderMenu();
+            updateCartUI();
+        });
+
+        // Render Category Filter Buttons
+        function renderCategoryTabs() {
+            categoryTabsContainer.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" 
+                    class="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border ${
+                        selectedCategory === cat 
+                        ? 'bg-amber-500 text-amber-950 border-amber-400 shadow-md font-bold' 
+                        : 'bg-amber-900/30 text-stone-300 border-amber-800/60 hover:bg-amber-900/60'
+                    }">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // Set Selected Category
+        function setCategory(cat) {
+            selectedCategory = cat;
+            renderCategoryTabs();
+            renderMenu();
+        }
+
+        // Filter Menu by Search Input & Category
+        function filterMenu() {
+            renderMenu();
+        }
+
+        // Render Menu Cards
+        function renderMenu() {
+            const searchTerm = document.getElementById("search-input").value.toLowerCase();
+            
+            const filtered = MENU_DATA.filter(item => {
+                const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
+                const matchesSearch = item.name.toLowerCase().includes(searchTerm) || item.desc.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                menuContainer.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-stone-400">
+                        <i class="fa-solid fa-utensils text-4xl mb-3 text-amber-800"></i>
+                        <p class="font-semibold text-sm">No items found matching your selection.</p>
+                        <p class="text-xs text-stone-500 mt-1">Try searching for something else like Burger, Tea, Momos or Rolls.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            menuContainer.innerHTML = filtered.map(item => {
+                const cartItem = cart.find(c => c.id === item.id);
+                const quantity = cartItem ? cartItem.quantity : 0;
+
+                return `
+                    <div class="bg-amber-900/20 border border-amber-800/50 hover:border-amber-700/80 rounded-2xl p-4 flex flex-col justify-between transition-all duration-200 shadow-md">
+                        <div>
+                            <div class="flex items-start justify-between gap-2 mb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-sm">
+                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                    </span>
+                                    <h3 class="font-bold text-stone-100 text-base leading-snug">${item.name}</h3>
+                                </div>
+                                <span class="text-amber-400 font-extrabold text-base">₹${item.price}</span>
+                            </div>
+                            <p class="text-stone-400 text-xs leading-relaxed mb-4">${item.desc}</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-amber-900/40 flex items-center justify-between">
+                            <span class="text-[10px] uppercase font-bold text-amber-500/80 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/40">
+                                ${item.category}
+                            </span>
+
+                            ${quantity === 0 ? `
+                                <button onclick="addToCart(${item.id})" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-amber-950 font-bold text-xs px-4 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                    <i class="fa-solid fa-plus"></i> ADD
+                                </button>
+                            ` : `
+                                <div class="flex items-center bg-amber-950 border border-amber-500 rounded-xl p-1 gap-3">
+                                    <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-amber-900 text-amber-300 font-bold flex items-center justify-center hover:bg-amber-800">
+                                        -
+                                    </button>
+                                    <span class="text-amber-400 font-bold text-xs">${quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-amber-500 text-amber-950 font-bold flex items-center justify-center hover:bg-amber-400">
+                                        +
+                                    </button>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Add item to cart
+        function addToCart(id) {
+            const item = MENU_DATA.find(m => m.id === id);
+            if (!item) return;
+
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+
+            showToast(`Added ${item.name} to cart!`);
+            updateCartUI();
+            renderMenu();
+        }
+
+        // Update item quantity
+        function updateQuantity(id, delta) {
+            const existingIndex = cart.findIndex(c => c.id === id);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += delta;
+                if (cart[existingIndex].quantity <= 0) {
+                    cart.splice(existingIndex, 1);
+                }
+            }
+            updateCartUI();
+            renderMenu();
+        }
+
+        // Update Cart Calculation & UI Sync
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Free delivery over ₹250
+            const deliveryCharge = (subtotal >= 250 || subtotal === 0) ? 0 : 30;
+            const grandTotal = subtotal + deliveryCharge;
+
+            // Badges and counters
+            cartBadgeCount.innerText = totalItems;
+            stickyCartCount.innerText = totalItems;
+            stickyCartTotal.innerText = `₹${grandTotal}`;
+
+            // Show/Hide sticky bar
+            if (totalItems > 0) {
+                stickyCartBar.classList.remove("translate-y-full");
+            } else {
+                stickyCartBar.classList.add("translate-y-full");
+            }
+
+            // Summary Breakdown
+            summarySubtotal.innerText = `₹${subtotal}`;
+            if (subtotal >= 250) {
+                summaryDelivery.innerText = "FREE";
+                summaryDelivery.className = "font-bold text-emerald-400";
+            } else if (subtotal > 0) {
+                summaryDelivery.innerText = "₹30";
+                summaryDelivery.className = "font-semibold text-amber-300";
+            } else {
+                summaryDelivery.innerText = "₹0";
+            }
+
+            summaryTotal.innerText = `₹${grandTotal}`;
+
+            // Render Modal Cart Items
+            renderModalCartItems(subtotal, deliveryCharge, grandTotal);
+        }
+
+        // Render Cart Items inside Side Modal
+        function renderModalCartItems(subtotal, deliveryCharge, grandTotal) {
+            if (cart.length === 0) {
+                cartModalBody.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center p-6 text-stone-400">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-amber-900 mb-4"></i>
+                        <h4 class="font-bold text-stone-200 text-base">Your cart is empty</h4>
+                        <p class="text-xs text-stone-500 mt-1 mb-4">Add delicious fast food items, tea, or momos to place an order.</p>
+                        <button onclick="closeCartModal()" class="bg-amber-500 text-amber-950 font-bold px-4 py-2 rounded-xl text-xs">
+                            Browse Menu
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = cart.map(item => `
+                <div class="bg-amber-900/30 border border-amber-800/60 rounded-xl p-3 flex items-center justify-between gap-3">
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-white text-xs">${item.name}</h4>
+                        <p class="text-amber-400 font-semibold text-xs">₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}</p>
+                    </div>
+                    <div class="flex items-center bg-amber-950 border border-amber-700 rounded-lg p-0.5 gap-2">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 bg-amber-900 text-amber-200 rounded flex items-center justify-center text-xs font-bold">
+                            -
+                        </button>
+                        <span class="text-xs font-bold text-amber-400 px-1">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 bg-amber-500 text-amber-950 rounded flex items-center justify-center text-xs font-bold">
+                            +
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            if (subtotal < 250) {
+                html += `
+                    <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-2.5 text-[11px] text-amber-300 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-amber-400 text-sm flex-shrink-0"></i>
+                        <span>Add items worth <b>₹${250 - subtotal}</b> more to get FREE Delivery in Ghatampur!</span>
+                    </div>
+                `;
+            }
+
+            cartModalBody.innerHTML = html;
+        }
+
+        // Open Modal
+        function openCartModal() {
+            cartModal.classList.remove("opacity-0", "pointer-events-none");
+        }
+
+        // Close Modal
+        function closeCartModal() {
+            cartModal.classList.add("opacity-0", "pointer-events-none");
+        }
+
+        // Toast Notification Trigger
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            document.getElementById("toast-message").innerText = message;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+
+        // Handle Order Submission (WhatsApp / Phone Call)
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+
+            if (cart.length === 0) {
+                alert("Please add items to your cart before ordering!");
+                return;
+            }
+
+            const name = document.getElementById("cust-name").value.trim();
+            const phone = document.getElementById("cust-phone").value.trim();
+            const address = document.getElementById("cust-address").value.trim();
+            const landmark = document.getElementById("cust-landmark").value.trim();
+            const notes = document.getElementById("cust-notes").value.trim();
+
+            const submitter = e.submitter ? e.submitter.value : 'whatsapp';
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryCharge = subtotal >= 250 ? 0 : 30;
+            const grandTotal = subtotal + deliveryCharge;
+
+            // Build structured text message
+            let msg = `*NEW ONLINE ORDER - BAITHAK CAFÉ*\n`;
+            msg += `------------------------------------\n`;
+            msg += `👤 *Customer Name:* ${name}\n`;
+            msg += `📞 *Phone:* ${phone}\n`;
+            msg += `📍 *Delivery Address:* ${address}\n`;
+            if (landmark) msg += `🏢 *Landmark:* ${landmark}\n`;
+            if (notes) msg += `📝 *Notes:* ${notes}\n`;
+            msg += `------------------------------------\n`;
+            msg += `*ORDER ITEMS:*\n`;
+            cart.forEach((item, idx) => {
+                msg += `${idx + 1}. ${item.name} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
+            });
+            msg += `------------------------------------\n`;
+            msg += `*Subtotal:* ₹${subtotal}\n`;
+            msg += `*Delivery Fee:* ${deliveryCharge === 0 ? 'FREE' : '₹' + deliveryCharge}\n`;
+            msg += `💰 *GRAND TOTAL:* ₹${grandTotal}\n`;
+            msg += `------------------------------------\n`;
+            msg += `📍 *Cafe Store Location:* Bhadras Road, Ghatampur, Near King Cooling Centre`;
+
+            const cafePhone = "917518417767";
+
+            if (submitter === 'whatsapp') {
+                const encodedMsg = encodeURIComponent(msg);
+                const waUrl = `https://wa.me/${cafePhone}?text=${encodedMsg}`;
+                window.open(waUrl, '_blank');
+            } else {
+                // Phone Call Order
+                const callUrl = `tel:+917518417767`;
+                window.location.href = callUrl;
+            }
+        }
+    </script>
+</body>
+</html>
